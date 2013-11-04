@@ -1,0 +1,10 @@
+<%= @area %> going <%= @direction %>
+<ul>
+  <% @buses.each do |bus| %>
+    <% if bus["expected_departure_time"] %>
+      <li><%= bus["line"] %> to <%= bus["direction"] %> at <%= bus["best_departure_estimate"] %></li>
+    <% else %>
+      <li><%= bus["line"] %> to <%= bus["direction"] %> scheduled for <%= bus["best_departure_estimate"] %></li>
+    <% end %>
+  <% end %>
+</ul>

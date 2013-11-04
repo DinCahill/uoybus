@@ -1,0 +1,16 @@
+<form action="/live" method="post">
+  <select name="area">
+    <% @areas.each_with_index do |area, i| %>
+      <option value="<%= area %>"><%= @area_nicenames[area] %></option>
+    <% end %>
+  </select>
+
+  going
+
+  <select name="direction">
+    <option value="west">West</option>
+    <option value="east">East</option>
+  </select>
+
+  <button type="submit">Get bus times</button>
+</form>
