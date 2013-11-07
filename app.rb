@@ -9,7 +9,6 @@ areas = [
   "city_centre",
   "railway"
 ]
-
 area_nicename_lookup = {
   "hes_east" => "UOY Hes East",
   "hes_west" => "UOY Hes West",
@@ -17,7 +16,6 @@ area_nicename_lookup = {
   "city_centre" => "Piccadilly",
   "railway" => "Railway Station"
 }
-
 area_atcocode_lookup = {
   "hes_east" => {
     "east" => ["3290YYA03630", "3290YYA01011"],
@@ -41,6 +39,14 @@ area_atcocode_lookup = {
   }
 }
 
+directions = ["east", "west"]
+direction_nicename_lookup = {
+  "east" => "East",
+  "west" => "West"
+}
+
+bus_lines = ["4", "44"]
+
 def lookup_buses lines, atcocodes
   buses = []
 
@@ -55,7 +61,7 @@ def lookup_buses lines, atcocodes
     live_buses = JSON.parse response.body
 
     live_buses["departures"].each do |live_bus_line, live_buses|
-      if lines.include?(live_bus_line.to_i)
+      if lines.include?(live_bus_line.to_s)
         live_buses.each do |live_bus|
           buses.push live_bus
         end
@@ -71,7 +77,10 @@ end
 
 get "/" do
   @areas = areas
+  @directions = directions
   @area_nicenames = area_nicename_lookup
+  @direction_nicenames = direction_nicename_lookup
+
   erb :welcome
 end
 
@@ -81,15 +90,23 @@ end
 
 get "/:area" do |area|
   @area = area
-  @direction = "west"
+  @direction = directions[1]
+
   redirect "/#{@area}/#{@direction}"
 end
 
 get "/:area/:direction" do |area, direction|
-  @time = Time.now
   @area = area
-  @area_nicename = area_nicename_lookup[@area]
   @direction = direction
-  @buses = lookup_buses([4, 44], area_atcocode_lookup[@area][@direction])
+
+  @area_nicename = area_nicename_lookup[@area]
+  @direction_nicename = direction_nicename_lookup[@direction]
+  if @area_nicename.nil? || @direction_nicename.nil?
+    redirect "/"
+  end
+
+  @time = Time.now
+  @buses = lookup_buses bus_lines, area_atcocode_lookup[@area][@direction]
+
   erb :buses
 end

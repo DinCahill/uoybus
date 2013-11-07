@@ -8,8 +8,9 @@
   going
 
   <select name="direction">
-    <option value="west">West</option>
-    <option value="east">East</option>
+    <% @directions.each_with_index do |direction, i| %>
+      <option value="<%= direction %>"><%= @direction_nicenames[direction] %></option>
+    <% end %>
   </select>
 
   <button type="submit">Get bus times</button>

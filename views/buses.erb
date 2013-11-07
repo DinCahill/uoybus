@@ -1,4 +1,4 @@
-<b><%= @area_nicename %></b> going <b><%= @direction %></b> at <b><%= @time.strftime("%H:%M") %></b>
+<p><b><%= @area_nicename %></b> going <b><%= @direction_nicename %></b> at <b><%= @time.strftime("%H:%M") %></b></p>
 <ul>
   <% @buses.each do |bus| %>
     <% if bus["expected_departure_time"] %>
@@ -8,3 +8,4 @@
     <% end %>
   <% end %>
 </ul>
+<p><a href="/">Try again</a><p>
