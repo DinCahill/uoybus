@@ -13,7 +13,7 @@ area_nicename_lookup = {
   "hes_east" => "UOY Hes East",
   "hes_west" => "UOY Hes West",
   "hes_road" => "Heslington Road",
-  "city_centre" => "Piccadilly",
+  "city_centre" => "City Centre",
   "railway" => "Railway Station"
 }
 area_atcocode_lookup = {
