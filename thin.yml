@@ -1,0 +1,15 @@
+---
+chdir: /server/www/uoybus.46b.it/webroot
+environment: production
+address: 0.0.0.0
+port: 8770
+timeout: 30
+log: ../logs/thin.log
+pid: tmp/pids/thin3.pid
+max_conns: 1024
+max_persistent_conns: 512
+require: []
+wait: 30
+servers: 3
+daemonize: true
+rackup: /server/www/uoybus.46b.it/webroot/config.ru
