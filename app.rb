@@ -41,8 +41,8 @@ area_atcocode_lookup = {
 
 directions = ["east", "west"]
 direction_nicename_lookup = {
-  "east" => "East",
-  "west" => "West"
+  "east" => "towards the University",
+  "west" => "towards the Railway Station"
 }
 
 bus_lines = ["4", "44"]

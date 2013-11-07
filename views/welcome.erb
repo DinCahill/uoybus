@@ -1,4 +1,7 @@
+<p>There's no need to wait at bus stops at night - UOYBus will tell you the live running times of #4 and #44.</p>
+
 <form action="/live" method="post">
+  I'm at
   <select name="area">
     <% @areas.each_with_index do |area, i| %>
       <option value="<%= area %>"><%= @area_nicenames[area] %></option>
@@ -6,7 +9,6 @@
   </select>
 
   going
-
   <select name="direction">
     <% @directions.each_with_index do |direction, i| %>
       <option value="<%= direction %>"><%= @direction_nicenames[direction] %></option>
