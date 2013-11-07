@@ -86,7 +86,9 @@ get "/:area" do |area|
 end
 
 get "/:area/:direction" do |area, direction|
+  @time = Time.now
   @area = area
+  @area_nicename = area_nicename_lookup[@area]
   @direction = direction
   @buses = lookup_buses([4, 44], area_atcocode_lookup[@area][@direction])
   erb :buses
