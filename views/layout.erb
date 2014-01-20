@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+    <title>uoyb.us</title>
     <meta name="viewport" content="initial-scale=1,
 				   width=device-width, height=device-height, 
 				   target-densitydpi=device-dpi" />
@@ -10,15 +10,17 @@
     <link rel="stylesheet" type="text/css" href="//code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.css">
     <link rel="stylesheet" type="text/css" href="custom.css">
   </head>
-  <div data-role="page" data-id="myheader" data-position="fixed">
-    <div data-role="header">
-      <h1>University Of York Live Buses</h1>
+  <body>
+    <div data-role="page" data-id="myheader" data-position="fixed">
+      <div data-role="header">
+	<h1>University Of York Live Buses</h1>
+      </div>
+      <div role="main" class="ui-content">
+	<%= yield %>
+      </div>
+      <div data-role="footer" data-id="myfooter">
+	<p>Built by <a href="https://46b.it">Michael Mokrysz</a>. <a href="https://46b.it/contact">Feedback is welcome!</a></p>
+      </div>
     </div>
-    <div role="main" class="ui-content">
-      <%= yield %>
-    </div>
-    <div data-role="footer" data-id="myfooter">
-      <p>Built by <a href="https://46b.it">Michael Mokrysz</a>. <a href="https://46b.it/contact">Feedback is welcome!</a></p>
-    </div>
-  </div>
+  </body>
 </html>
